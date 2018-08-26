@@ -14,7 +14,7 @@ import UIKit
     
     @objc @IBOutlet public private(set) weak var image: UIImageView!
     @objc @IBOutlet public private(set) weak var labelMainTitle: UILabel!
-    @objc @IBOutlet public private(set) weak var labelDescription: UILabel!
+    @objc @IBOutlet public private(set) weak var labelDescription: UITextView!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
