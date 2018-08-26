@@ -19,9 +19,7 @@ import UIKit
 open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     //FOR DATA  ------------------------
-    fileprivate var arrayOfImage = [UIImage]()
-    fileprivate var arrayOfTitle = [String]()
-    fileprivate var arrayOfDescription = [String]()
+    fileprivate var arrayOfAlerts = [Alert]()
     
     //FOR DESIGN    ------------------------
     open var buttonBottom: UIButton!
@@ -59,13 +57,10 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     @objc open var delegate: AlertOnboardingDelegate?
     
-    
-    @objc public init (arrayOfImage: [UIImage], arrayOfTitle: [String], arrayOfDescription: [String]) {
+    @objc public init (arrayOfAlerts: [Alert]) {
         super.init(frame: CGRect(x: 0,y: 0,width: 0,height: 0))
-        self.configure(arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription)
-        self.arrayOfImage = arrayOfImage
-        self.arrayOfTitle = arrayOfTitle
-        self.arrayOfDescription = arrayOfDescription
+        self.configure()
+        self.arrayOfAlerts = arrayOfAlerts
         
         self.interceptOrientationChange()
     }
@@ -94,7 +89,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         self.buttonBottom.setTitleColor(colorButtonText, for: UIControlState())
         self.buttonBottom.setTitle(self.titleSkipButton, for: UIControlState())
         
-        self.container = AlertPageViewController(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription, alertView: self)
+        self.container = AlertPageViewController(arrayOfAlerts: arrayOfAlerts, alertView: self)
         self.container.delegate = self
         self.insertSubview(self.container.view, aboveSubview: self)
         self.insertSubview(self.buttonBottom, aboveSubview: self)
@@ -130,7 +125,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     //MARK: Check if onboarding was skipped
     fileprivate func checkIfOnboardingWasSkipped(){
         let currentStep = self.container.currentStep
-        if currentStep < (self.container.arrayOfImage.count - 1) && !self.container.isCompleted{
+        if currentStep < (self.container.arrayOfAlerts.count - 1) && !self.container.isCompleted {
             self.delegate?.alertOnboardingSkipped(currentStep, maxStep: self.container.maxStep)
         }
         else {
@@ -140,8 +135,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     
     //MARK: FOR CONFIGURATION    --------------------------------------
-    fileprivate func configure(_ arrayOfImage: [UIImage], arrayOfTitle: [String], arrayOfDescription: [String]) {
-        
+    fileprivate func configure() {
         self.buttonBottom = UIButton(frame: CGRect(x: 0,y: 0, width: 0, height: 0))
         self.buttonBottom.titleLabel?.font = fontButtonText
         self.buttonBottom.addTarget(self, action: #selector(AlertOnboarding.onClick), for: .touchUpInside)
@@ -149,7 +143,6 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         self.background = UIView(frame: CGRect(x: 0,y: 0, width: 0, height: 0))
         self.background.backgroundColor = UIColor.black
         self.background.alpha = 0.5
-        
         
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
