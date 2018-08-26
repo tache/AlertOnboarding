@@ -12,7 +12,7 @@ class ViewController: UIViewController, AlertOnboardingDelegate {
     
     var alertView: AlertOnboarding!
     
-    var arrayOfImage = ["image1", "image2", "image3"]
+    var arrayOfImage = [UIImage(named: "image1")!, UIImage(named: "image2")!, UIImage(named: "image3")!]
     var arrayOfTitle = ["CREATE ACCOUNT", "CHOOSE THE PLANET", "DEPARTURE"]
     var arrayOfDescription = ["In your profile, you can view the statistics of its operations and the recommandations of friends",
                               "Purchase tickets on hot tours to your favorite planet and fly to the most comfortable intergalactic spaceships of best companies",

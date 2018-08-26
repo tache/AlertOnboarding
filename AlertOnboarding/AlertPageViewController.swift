@@ -20,7 +20,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
     var alertview: AlertOnboarding!
     
     //FOR DATA
-    var arrayOfImage: [String]!
+    var arrayOfImage: [UIImage]!
     var arrayOfTitle: [String]!
     var arrayOfDescription: [String]!
     var viewControllers = [UIViewController]()
@@ -32,7 +32,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
     var delegate: AlertPageViewDelegate?
     
     
-    init (arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String], alertView: AlertOnboarding) {
+    init (arrayOfImage: [UIImage], arrayOfTitle: [String], arrayOfDescription: [String], alertView: AlertOnboarding) {
         super.init(nibName: nil, bundle: nil)
         self.arrayOfImage = arrayOfImage
         self.arrayOfTitle = arrayOfTitle
@@ -122,7 +122,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         
         let realIndex = arrayOfImage.count - index - 1
         
-        pageContentViewController.image.image = UIImage(named: arrayOfImage[realIndex])
+        pageContentViewController.image.image = arrayOfImage[realIndex]
         pageContentViewController.image.layer.minificationFilter=kCAFilterTrilinear
         pageContentViewController.labelMainTitle.font = alertview.fontTitleLabel
         pageContentViewController.labelMainTitle.text = arrayOfTitle[realIndex]

@@ -19,7 +19,7 @@ import UIKit
 open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     //FOR DATA  ------------------------
-    fileprivate var arrayOfImage = [String]()
+    fileprivate var arrayOfImage = [UIImage]()
     fileprivate var arrayOfTitle = [String]()
     fileprivate var arrayOfDescription = [String]()
     
@@ -60,7 +60,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     @objc open var delegate: AlertOnboardingDelegate?
     
     
-    @objc public init (arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String]) {
+    @objc public init (arrayOfImage: [UIImage], arrayOfTitle: [String], arrayOfDescription: [String]) {
         super.init(frame: CGRect(x: 0,y: 0,width: 0,height: 0))
         self.configure(arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription)
         self.arrayOfImage = arrayOfImage
@@ -140,7 +140,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     
     //MARK: FOR CONFIGURATION    --------------------------------------
-    fileprivate func configure(_ arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String]) {
+    fileprivate func configure(_ arrayOfImage: [UIImage], arrayOfTitle: [String], arrayOfDescription: [String]) {
         
         self.buttonBottom = UIButton(frame: CGRect(x: 0,y: 0, width: 0, height: 0))
         self.buttonBottom.titleLabel?.font = fontButtonText
