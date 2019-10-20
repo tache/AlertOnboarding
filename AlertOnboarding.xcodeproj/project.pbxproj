@@ -17,6 +17,7 @@
 		37845A801D994DA6009B3734 /* AlertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37845A7F1D994DA6009B3734 /* AlertPageViewController.swift */; };
 		37845A821D994DE6009B3734 /* AlertChildPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37845A811D994DE6009B3734 /* AlertChildPageViewController.xib */; };
 		9241A9352132E40600FD8638 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9241A9342132E40600FD8638 /* Alert.swift */; };
+		F527ED86235CE959000612CE /* color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F527ED85235CE959000612CE /* color.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		37845A7F1D994DA6009B3734 /* AlertPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPageViewController.swift; sourceTree = "<group>"; };
 		37845A811D994DE6009B3734 /* AlertChildPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertChildPageViewController.xib; sourceTree = "<group>"; };
 		9241A9342132E40600FD8638 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		F527ED85235CE959000612CE /* color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = color.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +69,11 @@
 				37845A7A1D994D51009B3734 /* Alert */,
 				37845A681D994CBA009B3734 /* AppDelegate.swift */,
 				37845A6A1D994CBA009B3734 /* ViewController.swift */,
-				37845A6C1D994CBA009B3734 /* Main.storyboard */,
 				37845A6F1D994CBA009B3734 /* Assets.xcassets */,
-				37845A711D994CBA009B3734 /* LaunchScreen.storyboard */,
+				F527ED85235CE959000612CE /* color.xcassets */,
 				37845A741D994CBA009B3734 /* Info.plist */,
+				37845A6C1D994CBA009B3734 /* Main.storyboard */,
+				37845A711D994CBA009B3734 /* LaunchScreen.storyboard */,
 				37845A811D994DE6009B3734 /* AlertChildPageViewController.xib */,
 			);
 			path = AlertOnboarding;
@@ -114,19 +117,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = CookMinute;
 				TargetAttributes = {
 					37845A641D994CBA009B3734 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 37845A601D994CBA009B3734 /* Build configuration list for PBXProject "AlertOnboarding" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -149,6 +152,7 @@
 			files = (
 				37845A731D994CBA009B3734 /* LaunchScreen.storyboard in Resources */,
 				37845A701D994CBA009B3734 /* Assets.xcassets in Resources */,
+				F527ED86235CE959000612CE /* color.xcassets in Resources */,
 				37845A821D994DE6009B3734 /* AlertChildPageViewController.xib in Resources */,
 				37845A6E1D994CBA009B3734 /* Main.storyboard in Resources */,
 			);
@@ -196,6 +200,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -256,6 +261,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -314,6 +320,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cookminute.AlertOnboarding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -326,6 +333,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cookminute.AlertOnboarding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

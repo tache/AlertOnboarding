@@ -29,7 +29,20 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
     var isCompleted = false
     var delegate: AlertPageViewDelegate?
     
-    
+    var colorForPageViewBackground: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertViewBackgroundColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertViewBackgroundColor")!
+            @unknown default:
+                return UIColor(named: "alertViewBackgroundColor")!
+            }
+        }
+        return .white
+    }
+
     init (arrayOfAlerts: [Alert], alertView: AlertOnboarding) {
         super.init(nibName: nil, bundle: nil)
         self.arrayOfAlerts = arrayOfAlerts
@@ -50,7 +63,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         self.configurePageViewController()
         self.configurePageControl()
         
-        self.view.backgroundColor = UIColor.clear
+        self.view.backgroundColor = colorForPageViewBackground
         self.view.addSubview(self.pageController.view)
         self.view.addSubview(self.pageControl)
         self.pageController.didMove(toParent: self)
