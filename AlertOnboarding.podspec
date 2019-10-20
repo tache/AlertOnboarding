@@ -13,8 +13,7 @@ s.requires_arc = true
 # If more than one source file: https://guides.cocoapods.org/syntax/podspec.html#source_files
 s.source_files = 'Pod/Classes/**/*'
 s.resource_bundles = {
-  'AlertOnboardingXib' => [ 'Pod/Assets/*.xib' ],
-  'color.xcassets' => [ 'Pod/Assets/*.xcassets' ]
+  'AlertOnboarding' => ['AlertOnboarding/**/*.{xib,xcassets}']
 }
 
 end
