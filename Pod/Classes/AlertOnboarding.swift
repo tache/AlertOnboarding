@@ -19,29 +19,121 @@ import UIKit
 open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     //FOR DATA  ------------------------
+
     fileprivate var arrayOfAlerts = [Alert]()
     
     //FOR DESIGN    ------------------------
+
     open var buttonBottom: UIButton!
     fileprivate var container: AlertPageViewController!
     open var background: UIView!
+
+    // COLOR VARS   ------------------------
+
+    var colorForAlertViewBackground: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertViewBackgroundColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertViewBackgroundColor")!
+            @unknown default:
+                return UIColor(named: "alertViewBackgroundColor")!
+            }
+        }
+        return .white
+    }
     
-    
-    //PUBLIC VARS   ------------------------
-    @objc open var colorForAlertViewBackground: UIColor = UIColor.white
-    
-    @objc open var colorButtonBottomBackground: UIColor = UIColor(red: 226/255, green: 237/255, blue: 248/255, alpha: 1.0)
-    @objc open var colorButtonText: UIColor = UIColor(red: 118/255, green: 125/255, blue: 152/255, alpha: 1.0)
-    
-    @objc open var colorTitleLabel: UIColor = UIColor(red: 171/255, green: 177/255, blue: 196/255, alpha: 1.0)
-    @objc open var colorDescriptionLabel: UIColor = UIColor(red: 171/255, green: 177/255, blue: 196/255, alpha: 1.0)
-    
+    var colorButtonBottomBackground: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertButtonBottomBackgroundColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertButtonBottomBackgroundColor")!
+            @unknown default:
+                return UIColor(named: "alertButtonBottomBackgroundColor")!
+            }
+        } else {
+            return UIColor(red: 226/255, green: 237/255, blue: 248/255, alpha: 1.0)
+        }
+    }
+
+    var colorButtonText: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertButtonTextColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertButtonTextColor")!
+            @unknown default:
+                return UIColor(named: "alertButtonTextColor")!
+            }
+        }
+        return UIColor(red: 118/255, green: 125/255, blue: 152/255, alpha: 1.0)
+    }
+
+    var colorTitleLabel: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertDetailTitleLabelColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertDetailTitleLabelColor")!
+            @unknown default:
+                return UIColor(named: "alertDetailTitleLabelColor")!
+            }
+        }
+        return UIColor(red: 171/255, green: 177/255, blue: 196/255, alpha: 1.0)
+    }
+
+    var colorDescriptionLabel: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertDetailDescriptionLabelColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertDetailDescriptionLabelColor")!
+            @unknown default:
+                return UIColor(named: "alertDetailDescriptionLabelColor")!
+            }
+        }
+        return UIColor(red: 171/255, green: 177/255, blue: 196/255, alpha: 1.0)
+    }
+
+    var colorPageIndicator: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertPageIndicatorOtherColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertPageIndicatorOtherColor")!
+            @unknown default:
+                return UIColor(named: "alertPageIndicatorOtherColor")!
+            }
+        }
+        return UIColor(red: 171/255, green: 177/255, blue: 196/255, alpha: 1.0)
+    }
+
+    var colorCurrentPageIndicator: UIColor {
+        if #available(iOS 13, *) {
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(named: "alertPageIndicatorCurrentColor")!
+            case .light, .unspecified:
+                return UIColor(named: "alertPageIndicatorCurrentColor")!
+            @unknown default:
+                return UIColor(named: "alertPageIndicatorCurrentColor")!
+            }
+        }
+        return UIColor(red: 118/255, green: 125/255, blue: 152/255, alpha: 1.0)
+    }
+
+    // COLOR VARS   ------------------------
+
     @objc open var fontTitleLabel: UIFont? = UIFont(name: "Avenir-Heavy", size: 17);
     @objc open var fontDescriptionLabel: UIFont? = UIFont(name: "Avenir-Book", size: 13);
     @objc open var fontButtonText: UIFont? = UIFont(name: "Avenir-Black", size: 15);
-    
-    @objc open var colorPageIndicator = UIColor(red: 171/255, green: 177/255, blue: 196/255, alpha: 1.0)
-    @objc open var colorCurrentPageIndicator = UIColor(red: 118/255, green: 125/255, blue: 152/255, alpha: 1.0)
     
     open var heightForAlertView: CGFloat!
     open var widthForAlertView: CGFloat!
@@ -53,7 +145,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     @objc open var titleNextButton = "NEXT"
     @objc open var titleSkipButton = "SKIP"
-    @objc open var titleGotItButton = "GOT IT !"
+    @objc open var titleGotItButton = "GOT IT!"
     
     @objc open var delegate: AlertOnboardingDelegate?
     
@@ -80,13 +172,16 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     //-----------------------------------------------------------------------------------------
     // MARK: PUBLIC FUNCTIONS    --------------------------------------------------------------
     //-----------------------------------------------------------------------------------------
-    
+
+    override open func draw(_ rect: CGRect) {
+        self.backgroundColor = colorForAlertViewBackground
+        self.buttonBottom.backgroundColor = colorButtonBottomBackground
+        self.buttonBottom.setTitleColor(colorButtonText, for: UIControl.State())
+        self.setNeedsDisplay()
+    }
+
     @objc open func show() {
         
-        //Update Color
-        self.buttonBottom.backgroundColor = colorButtonBottomBackground
-        self.backgroundColor = colorForAlertViewBackground
-        self.buttonBottom.setTitleColor(colorButtonText, for: UIControl.State())
         self.buttonBottom.setTitle(self.titleSkipButton, for: UIControl.State())
         
         self.container = AlertPageViewController(arrayOfAlerts: arrayOfAlerts, alertView: self)
@@ -141,7 +236,12 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         self.buttonBottom.addTarget(self, action: #selector(AlertOnboarding.onClick), for: .touchUpInside)
         
         self.background = UIView(frame: CGRect(x: 0,y: 0, width: 0, height: 0))
-        self.background.backgroundColor = UIColor.black
+
+        if #available(iOS 13, *) {
+            self.background.backgroundColor = colorForAlertViewBackground
+        } else {
+            self.background.backgroundColor = .black
+        }
         self.background.alpha = 0.5
         
         self.clipsToBounds = true
