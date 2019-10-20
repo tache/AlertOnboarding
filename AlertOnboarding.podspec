@@ -14,7 +14,7 @@ s.requires_arc = true
 s.source_files = 'Pod/Classes/**/*'
 s.resource_bundles = {
   'AlertOnboardingXib' => [ 'Pod/Assets/*.xib' ],
-  "AlertOnboarding/color.xcassets"
+  'AlertOnboarding' => [ 'AlertOnboarding/color.xcassets' ]
 }
 
 end
