@@ -115,7 +115,7 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         let podBundle = Bundle(for: self.classForCoder)
         
         //FROM COCOAPOD
-        if let bundleURL = podBundle.url(forResource: "AlertOnboardingXib", withExtension: "bundle") {
+        if let bundleURL = podBundle.url(forResource: "AlertOnboardingAssets", withExtension: "bundle") {
             if let bundle = Bundle(url: bundleURL) {
                 pageContentViewController = UINib(nibName: "AlertChildPageViewController", bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? AlertChildPageViewController
             } else {
