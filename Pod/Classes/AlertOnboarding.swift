@@ -181,9 +181,12 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     }
 
     @objc open func show() {
-        
+
+        self.accessibilityLabel = "AlertOnboardingView"
+        self.buttonBottom.accessibilityLabel = "AlertButtonBottom"
+
         self.buttonBottom.setTitle(self.titleSkipButton, for: UIControl.State())
-        
+
         self.container = AlertPageViewController(arrayOfAlerts: arrayOfAlerts, alertView: self)
         self.container.delegate = self
         self.insertSubview(self.container.view, aboveSubview: self)
